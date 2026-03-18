@@ -1,0 +1,16 @@
+# Root-level ignores for monorepo
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+
+# Architecture docs
+ARCHITECTURE.md
+**/ARCHITECTURE.md
+SETUP_CHECKLIST.md  
