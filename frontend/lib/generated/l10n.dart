@@ -64,6 +64,16 @@ class S {
     return Intl.message('Home', name: 'home', desc: '', args: []);
   }
 
+  /// `Scan your bouquet and find out what flowers are in it ❀ `
+  String get homeTitle {
+    return Intl.message(
+      'Scan your bouquet and find out what flowers are in it ❀ ',
+      name: 'homeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Catalog`
   String get catalog {
     return Intl.message('Catalog', name: 'catalog', desc: '', args: []);
@@ -132,6 +142,91 @@ class S {
   /// `Search...`
   String get search {
     return Intl.message('Search...', name: 'search', desc: '', args: []);
+  }
+
+  /// `How it works`
+  String get howItWorks {
+    return Intl.message('How it works', name: 'howItWorks', desc: '', args: []);
+  }
+
+  /// `Photo`
+  String get photo {
+    return Intl.message('Photo', name: 'photo', desc: '', args: []);
+  }
+
+  /// `Import`
+  String get import {
+    return Intl.message('Import', name: 'import', desc: '', args: []);
+  }
+
+  /// `History`
+  String get historySection {
+    return Intl.message('History', name: 'historySection', desc: '', args: []);
+  }
+
+  /// `Scan bouquet`
+  String get step1Title {
+    return Intl.message('Scan bouquet', name: 'step1Title', desc: '', args: []);
+  }
+
+  /// `Take a photo of your bouquet or upload one from your gallery.`
+  String get step1Text {
+    return Intl.message(
+      'Take a photo of your bouquet or upload one from your gallery.',
+      name: 'step1Text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Flower recognition`
+  String get step2Title {
+    return Intl.message(
+      'Flower recognition',
+      name: 'step2Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The model analyzes the photo and identifies all the flowers in the bouquet.`
+  String get step2Text {
+    return Intl.message(
+      'The model analyzes the photo and identifies all the flowers in the bouquet.',
+      name: 'step2Text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Explore flower details`
+  String get step3Title {
+    return Intl.message(
+      'Explore flower details',
+      name: 'step3Title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See flower names, confidence levels and learn more about every species.`
+  String get step3Text {
+    return Intl.message(
+      'See flower names, confidence levels and learn more about every species.',
+      name: 'step3Text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No detections yet. Take a photo of your bouquet to get started!`
+  String get noDetectionsYet {
+    return Intl.message(
+      'No detections yet. Take a photo of your bouquet to get started!',
+      name: 'noDetectionsYet',
+      desc: '',
+      args: [],
+    );
   }
 }
 

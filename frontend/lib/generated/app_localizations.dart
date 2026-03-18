@@ -221,13 +221,13 @@ abstract class AppLocalizations {
   /// No description provided for @step2Title.
   ///
   /// In en, this message translates to:
-  /// **'AI detects flowers'**
+  /// **'Flower recognition'**
   String get step2Title;
 
   /// No description provided for @step2Text.
   ///
   /// In en, this message translates to:
-  /// **'Our AI analyzes the photo and identifies each flower in the bouquet.'**
+  /// **'The model analyzes the photo and identifies all the flowers in the bouquet.'**
   String get step2Text;
 
   /// No description provided for @step3Title.

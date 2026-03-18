@@ -5,17 +5,12 @@ class HomeRoute extends GoRouteData with $HomeRoute {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => di.sl<HomeCubit>()),
-        BlocProvider(
-          create: (_) {
-            final cubit = di.sl<DetectionHistoryCubit>();
-            cubit.load();
-            return cubit;
-          },
-        ),
-      ],
+    return BlocProvider(
+      create: (_) {
+        final cubit = di.sl<HomeCubit>();
+        cubit.loadDetectionHistory();
+        return cubit;
+      },
       child: const HomePage(),
     );
   }

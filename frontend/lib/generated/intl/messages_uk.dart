@@ -34,10 +34,32 @@ class MessageLookup extends MessageLookupByLibrary {
     "errorNotFound": MessageLookupByLibrary.simpleMessage("Не знайдено"),
     "flowers": MessageLookupByLibrary.simpleMessage("Квіти"),
     "history": MessageLookupByLibrary.simpleMessage("Історія розпізнавань"),
+    "historySection": MessageLookupByLibrary.simpleMessage("Історія"),
     "home": MessageLookupByLibrary.simpleMessage("Головна"),
+    "homeTitle": MessageLookupByLibrary.simpleMessage(
+      "Відскануйте свій букет та дізнайтесь, які квіти в ньому ❀",
+    ),
+    "howItWorks": MessageLookupByLibrary.simpleMessage("Як це працює"),
+    "import": MessageLookupByLibrary.simpleMessage("Імпорт"),
     "loading": MessageLookupByLibrary.simpleMessage("Завантаження..."),
+    "noDetectionsYet": MessageLookupByLibrary.simpleMessage(
+      "Ще не було розпізнавань. Зробіть фото букета, щоб почати!",
+    ),
+    "photo": MessageLookupByLibrary.simpleMessage("Фото"),
     "retry": MessageLookupByLibrary.simpleMessage("Повторити"),
     "search": MessageLookupByLibrary.simpleMessage("Пошук..."),
     "settings": MessageLookupByLibrary.simpleMessage("Налаштування"),
+    "step1Text": MessageLookupByLibrary.simpleMessage(
+      "Зробіть фото букета або завантажте з галереї.",
+    ),
+    "step1Title": MessageLookupByLibrary.simpleMessage("Скануй букет"),
+    "step2Text": MessageLookupByLibrary.simpleMessage(
+      "Модель аналізує фото та визначає всі квіти у букеті.",
+    ),
+    "step2Title": MessageLookupByLibrary.simpleMessage("Розпізнавання квітів"),
+    "step3Text": MessageLookupByLibrary.simpleMessage(
+      "Отримайте назви квітів, впевненість моделі та інформацію про них.",
+    ),
+    "step3Title": MessageLookupByLibrary.simpleMessage("Дізнайтесь більше"),
   };
 }

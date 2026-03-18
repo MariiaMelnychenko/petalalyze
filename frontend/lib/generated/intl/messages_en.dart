@@ -34,10 +34,34 @@ class MessageLookup extends MessageLookupByLibrary {
     "errorNotFound": MessageLookupByLibrary.simpleMessage("Not found"),
     "flowers": MessageLookupByLibrary.simpleMessage("Flowers"),
     "history": MessageLookupByLibrary.simpleMessage("Detection History"),
+    "historySection": MessageLookupByLibrary.simpleMessage("History"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "homeTitle": MessageLookupByLibrary.simpleMessage(
+      "Scan your bouquet and find out what flowers are in it ❀ ",
+    ),
+    "howItWorks": MessageLookupByLibrary.simpleMessage("How it works"),
+    "import": MessageLookupByLibrary.simpleMessage("Import"),
     "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
+    "noDetectionsYet": MessageLookupByLibrary.simpleMessage(
+      "No detections yet. Take a photo of your bouquet to get started!",
+    ),
+    "photo": MessageLookupByLibrary.simpleMessage("Photo"),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "search": MessageLookupByLibrary.simpleMessage("Search..."),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "step1Text": MessageLookupByLibrary.simpleMessage(
+      "Take a photo of your bouquet or upload one from your gallery.",
+    ),
+    "step1Title": MessageLookupByLibrary.simpleMessage("Scan bouquet"),
+    "step2Text": MessageLookupByLibrary.simpleMessage(
+      "The model analyzes the photo and identifies all the flowers in the bouquet.",
+    ),
+    "step2Title": MessageLookupByLibrary.simpleMessage("Flower recognition"),
+    "step3Text": MessageLookupByLibrary.simpleMessage(
+      "See flower names, confidence levels and learn more about every species.",
+    ),
+    "step3Title": MessageLookupByLibrary.simpleMessage(
+      "Explore flower details",
+    ),
   };
 }

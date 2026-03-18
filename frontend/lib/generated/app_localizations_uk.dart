@@ -70,7 +70,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get step1Text => 'Зробіть фото букета або завантажте з галереї.';
 
   @override
-  String get step2Title => 'AI розпізнає квіти';
+  String get step2Title => 'Розпізнавання квітів';
 
   @override
   String get step2Text =>

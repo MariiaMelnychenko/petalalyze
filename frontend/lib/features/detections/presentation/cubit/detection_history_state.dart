@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import '../../domain/entities/detection_list_item.dart';
+
 enum DetectionHistoryStatus { initial, loading, success, failure }
 
 class DetectionHistoryState extends Equatable {
@@ -9,7 +11,7 @@ class DetectionHistoryState extends Equatable {
   });
 
   final DetectionHistoryStatus status;
-  final List<String> detections;
+  final List<DetectionListItem> detections;
 
   bool get isLoading => status == DetectionHistoryStatus.loading;
   bool get isEmpty =>
@@ -18,7 +20,7 @@ class DetectionHistoryState extends Equatable {
 
   DetectionHistoryState copyWith({
     DetectionHistoryStatus? status,
-    List<String>? detections,
+    List<DetectionListItem>? detections,
   }) {
     return DetectionHistoryState(
       status: status ?? this.status,

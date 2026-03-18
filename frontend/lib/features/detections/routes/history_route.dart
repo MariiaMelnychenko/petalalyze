@@ -6,7 +6,11 @@ class DetectionHistoryRoute extends GoRouteData with $DetectionHistoryRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return BlocProvider(
-      create: (_) => di.sl<DetectionHistoryCubit>(),
+      create: (_) {
+        final cubit = di.sl<DetectionHistoryCubit>();
+        cubit.load();
+        return cubit;
+      },
       child: const DetectionHistoryPage(),
     );
   }

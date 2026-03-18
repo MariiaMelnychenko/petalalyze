@@ -20,8 +20,8 @@
   "historySection": "History",
   "step1Title": "Scan bouquet",
   "step1Text": "Take a photo of your bouquet or upload one from your gallery.",
-  "step2Title": "AI detects flowers",
-  "step2Text": "Our AI analyzes the photo and identifies each flower in the bouquet.",
+  "step2Title": "Flower recognition",
+  "step2Text": "The model analyzes the photo and identifies all the flowers in the bouquet.",
   "step3Title": "Explore flower details",
   "step3Text": "See flower names, confidence levels and learn more about every species.",
   "noDetectionsYet": "No detections yet. Take a photo of your bouquet to get started!"

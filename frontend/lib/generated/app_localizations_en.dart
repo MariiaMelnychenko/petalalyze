@@ -71,11 +71,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'Take a photo of your bouquet or upload one from your gallery.';
 
   @override
-  String get step2Title => 'AI detects flowers';
+  String get step2Title => 'Flower recognition';
 
   @override
   String get step2Text =>
-      'Our AI analyzes the photo and identifies each flower in the bouquet.';
+      'The model analyzes the photo and identifies all the flowers in the bouquet.';
 
   @override
   String get step3Title => 'Explore flower details';

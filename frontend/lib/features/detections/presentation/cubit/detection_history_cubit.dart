@@ -1,19 +1,21 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../domain/usecases/get_detection_history_usecase.dart';
 import 'detection_history_state.dart';
 
 class DetectionHistoryCubit extends Cubit<DetectionHistoryState> {
-  DetectionHistoryCubit() : super(const DetectionHistoryState());
+  DetectionHistoryCubit(this._getDetectionHistory)
+      : super(const DetectionHistoryState());
+
+  final GetDetectionHistoryUseCase _getDetectionHistory;
 
   Future<void> load() async {
     emit(state.copyWith(status: DetectionHistoryStatus.loading));
     try {
-      // TODO: Replace with API call when backend is ready
-      await Future<void>.delayed(const Duration(milliseconds: 500));
-      const detections = <String>[];
-      emit(const DetectionHistoryState(
+      final detections = await _getDetectionHistory();
+      emit(DetectionHistoryState(
         status: DetectionHistoryStatus.success,
-        detections: [],
+        detections: detections,
       ));
     } catch (_) {
       emit(state.copyWith(status: DetectionHistoryStatus.failure));
