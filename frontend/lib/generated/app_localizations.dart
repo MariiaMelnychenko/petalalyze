@@ -247,6 +247,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No detections yet. Take a photo of your bouquet to get started!'**
   String get noDetectionsYet;
+
+  /// No description provided for @noGalleryAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'No gallery access. Enable in settings.'**
+  String get noGalleryAccess;
+
+  /// No description provided for @noCameraAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'No camera access. Enable in settings.'**
+  String get noCameraAccess;
 }
 
 class _AppLocalizationsDelegate

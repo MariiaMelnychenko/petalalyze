@@ -6,6 +6,7 @@ import 'package:petalalyze/core/services/device_id_service.dart';
 import 'package:petalalyze/features/detections/data/datasources/detections_remote_datasource.dart';
 import 'package:petalalyze/features/detections/data/repositories/detections_repository_impl.dart';
 import 'package:petalalyze/features/detections/domain/repositories/detections_repository.dart';
+import 'package:petalalyze/features/detections/domain/usecases/detect_image_usecase.dart';
 import 'package:petalalyze/features/detections/domain/usecases/get_detection_history_usecase.dart';
 import 'package:petalalyze/features/detections/presentation/cubit/detection_details_cubit.dart';
 import 'package:petalalyze/features/detections/presentation/cubit/detection_history_cubit.dart';
@@ -30,6 +31,9 @@ class DetectionsCoordinator extends BaseFeatureCoordinator {
         ),
         DependencyRegistration<GetDetectionHistoryUseCase>(
           () => GetDetectionHistoryUseCase(di.sl<DetectionsRepository>()),
+        ),
+        DependencyRegistration<DetectImageUseCase>(
+          () => DetectImageUseCase(repository: di.sl<DetectionsRepository>()),
         ),
         DependencyRegistration<DetectionHistoryCubit>(
           () => DetectionHistoryCubit(di.sl<GetDetectionHistoryUseCase>()),

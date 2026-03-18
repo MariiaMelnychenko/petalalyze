@@ -1,13 +1,104 @@
 import 'package:flutter/material.dart';
 import 'package:petalalyze/core/constants/app_assets.dart';
+import 'package:petalalyze/core/di/injection.dart' as di;
+import 'package:petalalyze/features/detections/domain/usecases/detect_image_usecase.dart';
+import 'package:petalalyze/shared/image_picker/image_picker_exceptions.dart';
+import 'package:petalalyze/shared/image_picker/image_picker_service.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/routing/app_router.dart';
 import '../../../../generated/app_localizations.dart';
 import '../widgets/home_widgets.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late final ImagePickerService _imagePickerService;
+  late final DetectImageUseCase _detectImageUseCase;
+
+  @override
+  void initState() {
+    super.initState();
+    _imagePickerService = di.sl<ImagePickerService>();
+    _detectImageUseCase = di.sl<DetectImageUseCase>();
+  }
+
+  Future<void> _handleTakePhoto() async {
+    try {
+      final path = await _imagePickerService.takePhoto();
+      if (path != null && mounted) {
+        await _openDetectionWithImage(path);
+      }
+    } on ImagePickerPermissionException catch (e) {
+      if (e.isPermanentlyDenied && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.noCameraAccess),
+            backgroundColor: AppColors.red,
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(e.toString()),
+            backgroundColor: AppColors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _handleImportImage() async {
+    try {
+      final path = await _imagePickerService.pickSingleImage();
+      if (path != null && mounted) {
+        await _openDetectionWithImage(path);
+      }
+    } on ImagePickerPermissionException catch (e) {
+      if (e.isPermanentlyDenied && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.noGalleryAccess),
+            backgroundColor: AppColors.red,
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(e.toString()),
+            backgroundColor: AppColors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _openDetectionWithImage(String imagePath) async {
+    try {
+      final detectionId = await _detectImageUseCase(imagePath);
+      if (mounted) {
+        DetectionResultRoute(detectionId: '$detectionId').push(context);
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(e.toString()),
+            backgroundColor: AppColors.red,
+          ),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +162,7 @@ class HomePage extends StatelessWidget {
                               Container(
                                 decoration: BoxDecoration(
                                   color: AppColors.mediumGreen.withValues(alpha: 0.3),
-                                  // borderRadius: BorderRadius.all(Radius.circular(32))
-                                  borderRadius: BorderRadius.vertical(
+                                  borderRadius: const BorderRadius.vertical(
                                     top: Radius.circular(33),
                                   ),
                                 ),
@@ -98,8 +188,8 @@ class HomePage extends StatelessWidget {
                                 child: ActionButtonsSection(
                                   photoLabel: l10n.photo,
                                   importLabel: l10n.import,
-                                  onPhotoTap: () => _openDetection(context),
-                                  onImportTap: () => _openDetection(context),
+                                  onPhotoTap: () => _handleTakePhoto(),
+                                  onImportTap: () => _handleImportImage(),
                                 ),
                               ),
                               const SizedBox(height: 32),
@@ -123,9 +213,5 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _openDetection(BuildContext context) {
-    const DetectionResultRoute(detectionId: '1').push(context);
   }
 }

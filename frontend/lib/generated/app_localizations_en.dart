@@ -87,4 +87,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get noDetectionsYet =>
       'No detections yet. Take a photo of your bouquet to get started!';
+
+  @override
+  String get noGalleryAccess => 'No gallery access. Enable in settings.';
+
+  @override
+  String get noCameraAccess => 'No camera access. Enable in settings.';
 }

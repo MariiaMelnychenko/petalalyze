@@ -14,4 +14,10 @@ class DetectionsRepositoryImpl implements DetectionsRepository {
     final models = await _remote.getDetections();
     return List<DetectionListItem>.from(models);
   }
+
+  @override
+  Future<int> detectImage(String imagePath) async {
+    final response = await _remote.detectImage(imagePath);
+    return response.detectionId;
+  }
 }
