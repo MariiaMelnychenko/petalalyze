@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 
 import '../network/network_client.dart';
 import '../services/device_id_service.dart';
+import '../../shared/image_picker/image_picker_service.dart';
 import '../../features/detections/coordinators/detections_coordinator.dart';
 import '../../features/flower/coordinators/flower_catalog_coordinator.dart';
 import '../../features/home/coordinators/home_coordinator.dart';
@@ -16,6 +17,7 @@ Future<void> initDependencies() async {
     () => DeviceIdService.create(),
   );
   await sl.isReady<DeviceIdService>();
+  sl.registerLazySingleton<ImagePickerService>(() => ImagePickerService());
 
   // Feature coordinators (Detections before Home - HomeCubit needs GetDetectionHistoryUseCase)
   FlowerCatalogCoordinator().register(sl);

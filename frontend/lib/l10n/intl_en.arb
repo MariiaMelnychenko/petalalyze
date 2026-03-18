@@ -24,5 +24,7 @@
   "step2Text": "The model analyzes the photo and identifies all the flowers in the bouquet.",
   "step3Title": "Explore flower details",
   "step3Text": "See flower names, confidence levels and learn more about every species.",
-  "noDetectionsYet": "No detections yet. Take a photo of your bouquet to get started!"
+  "noDetectionsYet": "No detections yet. Take a photo of your bouquet to get started!",
+  "noGalleryAccess": "No gallery access. Enable in settings.",
+  "noCameraAccess": "No camera access. Enable in settings."
 }

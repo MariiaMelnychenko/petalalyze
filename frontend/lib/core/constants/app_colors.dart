@@ -23,6 +23,7 @@ class AppColors {
 
   // Accent
   static const Color gold = Color(0xFFFFD400);
+  static const Color red = Color(0xFFE53935);
   // Neumorphic
   static const Color neumorphBg = Color(0xFFECF0F3);
   static const Color neumorphHighlight = Color(0xFFFFFFFF);
