@@ -228,6 +228,26 @@ class S {
       args: [],
     );
   }
+
+  /// `No gallery access. Enable in settings.`
+  String get noGalleryAccess {
+    return Intl.message(
+      'No gallery access. Enable in settings.',
+      name: 'noGalleryAccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No camera access. Enable in settings.`
+  String get noCameraAccess {
+    return Intl.message(
+      'No camera access. Enable in settings.',
+      name: 'noCameraAccess',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

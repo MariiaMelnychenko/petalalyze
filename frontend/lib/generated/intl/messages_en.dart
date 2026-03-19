@@ -42,8 +42,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "howItWorks": MessageLookupByLibrary.simpleMessage("How it works"),
     "import": MessageLookupByLibrary.simpleMessage("Import"),
     "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
+    "noCameraAccess": MessageLookupByLibrary.simpleMessage(
+      "No camera access. Enable in settings.",
+    ),
     "noDetectionsYet": MessageLookupByLibrary.simpleMessage(
       "No detections yet. Take a photo of your bouquet to get started!",
+    ),
+    "noGalleryAccess": MessageLookupByLibrary.simpleMessage(
+      "No gallery access. Enable in settings.",
     ),
     "photo": MessageLookupByLibrary.simpleMessage("Photo"),
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),

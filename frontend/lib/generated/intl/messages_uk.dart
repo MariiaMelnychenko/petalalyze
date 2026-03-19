@@ -42,8 +42,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "howItWorks": MessageLookupByLibrary.simpleMessage("Як це працює"),
     "import": MessageLookupByLibrary.simpleMessage("Імпорт"),
     "loading": MessageLookupByLibrary.simpleMessage("Завантаження..."),
+    "noCameraAccess": MessageLookupByLibrary.simpleMessage(
+      "Немає доступу до камери. Увімкніть у налаштуваннях.",
+    ),
     "noDetectionsYet": MessageLookupByLibrary.simpleMessage(
       "Ще не було розпізнавань. Зробіть фото букета, щоб почати!",
+    ),
+    "noGalleryAccess": MessageLookupByLibrary.simpleMessage(
+      "Немає доступу до галереї. Увімкніть у налаштуваннях.",
     ),
     "photo": MessageLookupByLibrary.simpleMessage("Фото"),
     "retry": MessageLookupByLibrary.simpleMessage("Повторити"),
