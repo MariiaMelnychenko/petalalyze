@@ -5,12 +5,10 @@ class HomeRoute extends GoRouteData with $HomeRoute {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return BlocProvider(
-      create: (_) {
-        final cubit = di.sl<HomeCubit>();
-        cubit.loadDetectionHistory();
-        return cubit;
-      },
+    final cubit = di.sl<HomeCubit>();
+    cubit.loadDetectionHistory();
+    return BlocProvider.value(
+      value: cubit,
       child: const HomePage(),
     );
   }
@@ -23,9 +21,27 @@ class DetectionResultRoute extends GoRouteData with $DetectionResultRoute {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return BlocProvider(
-      create: (_) => di.sl<HomeCubit>(),
+    return BlocProvider.value(
+      value: di.sl<HomeCubit>(),
       child: DetectionResultPage(detectionId: detectionId),
+    );
+  }
+}
+
+class PredictResultRoute extends GoRouteData with $PredictResultRoute {
+  const PredictResultRoute({this.$extra});
+
+  final String? $extra;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return BlocProvider(
+      create: (_) {
+        final cubit = di.sl<PredictResultCubit>();
+        if ($extra != null) cubit.predict($extra!);
+        return cubit;
+      },
+      child: const PredictResultPage(),
     );
   }
 }

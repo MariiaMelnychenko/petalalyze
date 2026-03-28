@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/api_endpoints.dart';
 import '../../../../core/constants/app_colors.dart';
 
 class FlowerImage extends StatelessWidget {
@@ -61,8 +60,7 @@ class FlowerImage extends StatelessWidget {
                 strokeWidth: 2,
                 color: AppColors.mediumGreen,
                 value: loadingProgress.expectedTotalBytes != null
-                    ? loadingProgress.cumulativeBytesLoaded /
-                        loadingProgress.expectedTotalBytes!
+                    ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
                     : null,
               ),
             ),

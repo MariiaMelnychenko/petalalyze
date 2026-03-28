@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/error/failures.dart';
 import '../../../../core/utils/either.dart';
 import '../../domain/repositories/flowers_repository.dart';
 import 'flower_details_state.dart';

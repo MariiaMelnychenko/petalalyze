@@ -44,7 +44,8 @@ class FlowerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FlowerDetailsRoute(flowerId: flower.id.toString()).push(context),
+      onTap: () =>
+          FlowerDetailsRoute(flowerId: flower.id.toString(), flowerName: flower.name).push(context),
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.neumorphBg,

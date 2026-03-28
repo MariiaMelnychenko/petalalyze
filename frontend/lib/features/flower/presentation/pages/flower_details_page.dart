@@ -9,15 +9,16 @@ import '../cubit/flower_details_state.dart';
 
 /// Flower details - photo, name, description, characteristics
 class FlowerDetailsPage extends StatelessWidget {
-  const FlowerDetailsPage({super.key, required this.flowerId});
+  const FlowerDetailsPage({super.key, required this.flowerId, required this.flowerName});
 
   final String flowerId;
+  final String flowerName;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Квітка #$flowerId'),
+        title: Text(flowerName),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => context.pop(),
@@ -93,9 +94,13 @@ class FlowerDetailsPage extends StatelessWidget {
                 ],
                 if (flower.season != null && flower.season!.isNotEmpty) ...[
                   const SizedBox(height: 12),
-                  Chip(
-                    label: Text(flower.season!),
-                    backgroundColor: AppColors.paleGreen,
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: AppColors.paleGreen,
+                    ),
+                    child: Text(flower.season!),
                   ),
                 ],
               ],
@@ -124,7 +129,7 @@ class _FlowerImage extends StatelessWidget {
     final url = _fullUrl;
     if (url == null) {
       return Container(
-        height: 200,
+        height: 400,
         decoration: BoxDecoration(
           color: AppColors.paleGreen,
           borderRadius: BorderRadius.circular(12),
@@ -142,7 +147,7 @@ class _FlowerImage extends StatelessWidget {
       borderRadius: BorderRadius.circular(12),
       child: Image.network(
         url,
-        height: 200,
+        height: 400,
         fit: BoxFit.cover,
         errorBuilder: (_, __, ___) => Container(
           height: 200,

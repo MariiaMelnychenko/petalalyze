@@ -5,7 +5,6 @@ import 'package:petalalyze/core/routing/app_navigation.dart';
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
 
-/// Splash screen with spinning flower animation and Petalalyze branding
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
@@ -48,10 +47,10 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Color(0xFFE8F8F0), // soft mint top
-              Color(0xFFD4EDE4), // sage
-              Color(0xFFB8E0D4), // aqua mint
-              Color(0xFFA3D4C4), // deeper sage
+              AppColors.paleGreen,
+              AppColors.lightMintGreen,
+              AppColors.mediumGreen,
+              AppColors.mediumDarkGreen,
             ],
             stops: [0.0, 0.35, 0.7, 1.0],
           ),
@@ -76,7 +75,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
               ),
               const Text(
                 'Petalalyze',
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 48,
                   fontWeight: FontWeight.w800,
                   color: AppColors.mediumDarkGreen,

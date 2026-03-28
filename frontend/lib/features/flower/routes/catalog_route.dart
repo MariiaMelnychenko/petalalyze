@@ -13,16 +13,17 @@ class FlowersCatalogRoute extends GoRouteData with $FlowersCatalogRoute {
 }
 
 class FlowerDetailsRoute extends GoRouteData with $FlowerDetailsRoute {
-  const FlowerDetailsRoute({required this.flowerId});
+  const FlowerDetailsRoute({required this.flowerId, required this.flowerName});
 
   final String flowerId;
+  final String flowerName;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
     final id = int.tryParse(flowerId) ?? 0;
     return BlocProvider(
       create: (_) => di.sl<FlowerDetailsCubit>()..loadFlower(id),
-      child: FlowerDetailsPage(flowerId: flowerId),
+      child: FlowerDetailsPage(flowerId: flowerId, flowerName: flowerName),
     );
   }
 }
