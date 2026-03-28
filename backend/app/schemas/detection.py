@@ -2,20 +2,6 @@ from datetime import datetime
 from pydantic import BaseModel
 
 
-class DetectionItemInResponse(BaseModel):
-    flower_id: int
-    class_name: str
-    confidence: float
-    bbox: list[float]
-    crop_url: str | None
-
-
-class DetectResponse(BaseModel):
-    detection_id: int
-    result_image_url: str
-    detections: list[DetectionItemInResponse]
-
-
 class DetectionListItemResponse(BaseModel):
     id: int
     image_url: str

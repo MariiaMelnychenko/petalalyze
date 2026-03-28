@@ -12,9 +12,10 @@ from app.database import init_db, async_session_maker
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 from app.models import Device, Flower, Detection, DetectionResult  # noqa: F401 - register models
-from app.routers import health, flowers, detections, detect
+from app.routers import health, flowers, detections, predict
 from app.utils.image_utils import ensure_directories
 from app.database.seed import seed_flowers
+from app.services.model_loader import load_models
 
 
 @asynccontextmanager
@@ -23,8 +24,8 @@ async def lifespan(app: FastAPI):
     await init_db()
     async with async_session_maker() as db:
         await seed_flowers(db)
+    load_models()
     yield
-    # cleanup if needed
 
 
 app = FastAPI(
@@ -56,16 +57,20 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
 app.add_middleware(RequestLoggingMiddleware)
 
 app.include_router(health.router)
-app.include_router(detect.router)
+app.include_router(predict.router)
 app.include_router(flowers.router)
 app.include_router(detections.router)
 
 # Mount static files for uploads, results, crops
 base_path = Path(__file__).resolve().parent.parent
-for folder in ["uploads", "results", "crops", "flowers"]:
+for folder in ["uploads", "results", "crops"]:
     path = base_path / folder
     path.mkdir(parents=True, exist_ok=True)
     app.mount(f"/{folder}", StaticFiles(directory=str(path)), name=folder)
+
+flower_img_path = base_path / "flowers"
+flower_img_path.mkdir(parents=True, exist_ok=True)
+app.mount("/flower-images", StaticFiles(directory=str(flower_img_path)), name="flower-images")
 
 
 if __name__ == "__main__":

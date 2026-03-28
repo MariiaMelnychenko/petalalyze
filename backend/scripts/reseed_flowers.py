@@ -23,7 +23,7 @@ async def reseed():
         for f in INITIAL_FLOWERS:
             db.add(Flower(**f))
         await db.commit()
-    print("Flowers table reseeded with 23 flowers.")
+    print(f"Flowers table reseeded with {len(INITIAL_FLOWERS)} flowers.")
 
 
 if __name__ == "__main__":
