@@ -8,6 +8,7 @@ part of 'app_navigation.dart';
 
 List<RouteBase> get $appRoutes => [
       $rootShellRouteData,
+      $splashRoute,
     ];
 
 RouteBase get $rootShellRouteData => StatefulShellRouteData.$route(
@@ -22,6 +23,10 @@ RouteBase get $rootShellRouteData => StatefulShellRouteData.$route(
                 GoRouteData.$route(
                   path: 'result/:detectionId',
                   factory: $DetectionResultRoute._fromState,
+                ),
+                GoRouteData.$route(
+                  path: 'predict',
+                  factory: $PredictResultRoute._fromState,
                 ),
               ],
             ),
@@ -112,6 +117,35 @@ mixin $DetectionResultRoute on GoRouteData {
   void replace(BuildContext context) => context.replace(location);
 }
 
+mixin $PredictResultRoute on GoRouteData {
+  static PredictResultRoute _fromState(GoRouterState state) =>
+      PredictResultRoute(
+        $extra: state.extra as String?,
+      );
+
+  PredictResultRoute get _self => this as PredictResultRoute;
+
+  @override
+  String get location => GoRouteData.$location(
+        '/home/predict',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location, extra: _self.$extra);
+
+  @override
+  Future<T?> push<T>(BuildContext context) =>
+      context.push<T>(location, extra: _self.$extra);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location, extra: _self.$extra);
+
+  @override
+  void replace(BuildContext context) =>
+      context.replace(location, extra: _self.$extra);
+}
+
 mixin $FlowersCatalogRoute on GoRouteData {
   static FlowersCatalogRoute _fromState(GoRouterState state) =>
       const FlowersCatalogRoute();
@@ -139,6 +173,7 @@ mixin $FlowerDetailsRoute on GoRouteData {
   static FlowerDetailsRoute _fromState(GoRouterState state) =>
       FlowerDetailsRoute(
         flowerId: state.pathParameters['flowerId']!,
+        flowerName: state.uri.queryParameters['flower-name']!,
       );
 
   FlowerDetailsRoute get _self => this as FlowerDetailsRoute;
@@ -146,6 +181,9 @@ mixin $FlowerDetailsRoute on GoRouteData {
   @override
   String get location => GoRouteData.$location(
         '/catalog/flower/${Uri.encodeComponent(_self.flowerId)}',
+        queryParams: {
+          'flower-name': _self.flowerName,
+        },
       );
 
   @override
@@ -196,6 +234,33 @@ mixin $DetectionDetailsRoute on GoRouteData {
   @override
   String get location => GoRouteData.$location(
         '/history/detection/${Uri.encodeComponent(_self.detectionId)}',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $splashRoute => GoRouteData.$route(
+      path: '/',
+      factory: $SplashRoute._fromState,
+    );
+
+mixin $SplashRoute on GoRouteData {
+  static SplashRoute _fromState(GoRouterState state) => const SplashRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/',
       );
 
   @override

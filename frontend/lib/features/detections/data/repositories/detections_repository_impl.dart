@@ -1,4 +1,6 @@
+import '../../domain/entities/detection_detail.dart';
 import '../../domain/entities/detection_list_item.dart';
+import '../../domain/entities/predict_result.dart';
 import '../../domain/repositories/detections_repository.dart';
 import '../datasources/detections_remote_datasource.dart';
 
@@ -16,8 +18,13 @@ class DetectionsRepositoryImpl implements DetectionsRepository {
   }
 
   @override
-  Future<int> detectImage(String imagePath) async {
-    final response = await _remote.detectImage(imagePath);
-    return response.detectionId;
-  }
+  Future<DetectionDetail> getDetectionById(int id) =>
+      _remote.getDetectionById(id);
+
+  @override
+  Future<PredictResult> predictImage(String imagePath) =>
+      _remote.predictImage(imagePath);
+
+  @override
+  Future<void> deleteDetection(int id) => _remote.deleteDetection(id);
 }

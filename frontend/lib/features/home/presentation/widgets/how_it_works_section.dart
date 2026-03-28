@@ -35,7 +35,7 @@ class HowItWorksSection extends StatefulWidget {
 
 class _HowItWorksSectionState extends State<HowItWorksSection> {
   late PageController _controller;
-  double _page = 1;
+  double _page = 0;
 
   static const _steps = 3;
 
@@ -44,11 +44,11 @@ class _HowItWorksSectionState extends State<HowItWorksSection> {
     super.initState();
     _controller = PageController(
       viewportFraction: 0.7,
-      initialPage: 1,
+      initialPage: 0,
     );
     _controller.addListener(() {
       setState(() {
-        _page = _controller.page ?? 1;
+        _page = _controller.page ?? 0;
       });
     });
   }

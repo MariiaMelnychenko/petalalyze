@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petalalyze/core/constants/app_assets.dart';
 import 'package:petalalyze/core/di/injection.dart' as di;
-import 'package:petalalyze/features/detections/domain/usecases/detect_image_usecase.dart';
 import 'package:petalalyze/shared/image_picker/image_picker_exceptions.dart';
 import 'package:petalalyze/shared/image_picker/image_picker_service.dart';
 
@@ -19,20 +18,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late final ImagePickerService _imagePickerService;
-  late final DetectImageUseCase _detectImageUseCase;
 
   @override
   void initState() {
     super.initState();
     _imagePickerService = di.sl<ImagePickerService>();
-    _detectImageUseCase = di.sl<DetectImageUseCase>();
   }
 
   Future<void> _handleTakePhoto() async {
     try {
       final path = await _imagePickerService.takePhoto();
       if (path != null && mounted) {
-        await _openDetectionWithImage(path);
+        _openDetectionWithImage(path);
       }
     } on ImagePickerPermissionException catch (e) {
       if (e.isPermanentlyDenied && mounted) {
@@ -59,7 +56,7 @@ class _HomePageState extends State<HomePage> {
     try {
       final path = await _imagePickerService.pickSingleImage();
       if (path != null && mounted) {
-        await _openDetectionWithImage(path);
+        _openDetectionWithImage(path);
       }
     } on ImagePickerPermissionException catch (e) {
       if (e.isPermanentlyDenied && mounted) {
@@ -82,22 +79,8 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  Future<void> _openDetectionWithImage(String imagePath) async {
-    try {
-      final detectionId = await _detectImageUseCase(imagePath);
-      if (mounted) {
-        DetectionResultRoute(detectionId: '$detectionId').push(context);
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(e.toString()),
-            backgroundColor: AppColors.red,
-          ),
-        );
-      }
-    }
+  void _openDetectionWithImage(String imagePath) {
+    PredictResultRoute($extra: imagePath).push(context);
   }
 
   @override

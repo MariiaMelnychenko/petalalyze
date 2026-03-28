@@ -10,6 +10,9 @@ part of 'package:petalalyze/core/routing/app_navigation.dart';
             TypedGoRoute<DetectionResultRoute>(
               path: 'result/:detectionId',
             ),
+            TypedGoRoute<PredictResultRoute>(
+              path: 'predict',
+            ),
           ],
         ),
       ],

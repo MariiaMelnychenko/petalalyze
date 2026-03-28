@@ -56,3 +56,10 @@ tmp/
 
 NETWORK_SETUP.md
 .env.example
+scripts
+crops
+results
+# Каталог зображень для каталогу квітів: покладіть сюди .jpg (див. seed.py — імена файлів).
+flowers/*
+!flowers/.gitkeep
+models
